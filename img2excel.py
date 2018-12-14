@@ -8,7 +8,7 @@ def rgb2hex(r, g, b):
 
 
 def img2excel(img_path, save_path, sheet_name="img", pixel_size=1):
-    img = np.array(Image.open(img_path))
+    img = np.array(Image.open(img_path).convert("RGB"))
 
     workbook = xlsxwriter.Workbook(save_path)
     sheet = workbook.add_worksheet(sheet_name)
@@ -17,7 +17,7 @@ def img2excel(img_path, save_path, sheet_name="img", pixel_size=1):
     known_color = {}
     for row in range(img.shape[0]):
         for col in range(img.shape[1]):
-            R, G, B = img[row, col][:3]
+            R, G, B = img[row, col]
 
             if (R, G, B) not in known_color:
                 new_format = workbook.add_format()
