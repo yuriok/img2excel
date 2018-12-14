@@ -1,5 +1,10 @@
-from PIL import Image
+#!/usr/bin/python3
+
+import argparse
+import sys
+
 import xlsxwriter
+from PIL import Image
 
 
 def rgb2hex(r: int, g: int, b: int) -> str:
@@ -82,5 +87,29 @@ def img2excel(img_path: str, save_path: str, sheet_name: str = "Image",
     workbook.close()
 
 
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("image", type=str,
+                        help="The path of the image you want to convert.")
+    parser.add_argument("-p", action="store_true", default=False,
+                        help="Use palette to support high resolution (e.g. 1920x1080).")
+    parser.add_argument("-l", action="store_true", default=False,
+                        help="Set the size of cells as 10 pixels, default is 1 pixel.")
+
+    parser.add_argument("--savepath", type=str, default="result.xlsx",
+                        help="The path to save the result.")
+    parser.add_argument("--sheetname", type=str, default="Image",
+                        help="The name of sheet in excel file.")
+
+    args = parser.parse_args()
+
+    if args.l:
+        pixel_size = "l"
+    else:
+        pixel_size = "s"
+    img2excel(args.image, args.savepath, sheet_name=args.sheetname,
+              pixel_size=pixel_size, use_palette=args.p)
+
+
 if __name__ == "__main__":
-    img2excel("sample.jpg", "result.xlsx", use_palette=False)
+    sys.exit(main())
