@@ -3,11 +3,20 @@ import numpy as np
 import xlsxwriter
 
 
-def rgb2hex(r, g, b):
+def rgb2hex(r: int, g: int, b: int) -> str:
     return "#" + hex((0x01 << 24) + (r << 16) + (g << 8) + b)[3:]
 
 
-def img2excel(img_path, save_path, sheet_name="img", pixel_size=1):
+def pixel_size_to_pixel_count(string: str) -> float:
+    if string == "s":
+        return 1
+    elif string == "l":
+        return 10
+    else:
+        return 1
+
+
+def img2excel(img_path: str, save_path: str, sheet_name: str = "img", pixel_size: str = "s"):
     img = np.array(Image.open(img_path).convert("RGB"))
 
     workbook = xlsxwriter.Workbook(save_path)
@@ -33,11 +42,12 @@ def img2excel(img_path, save_path, sheet_name="img", pixel_size=1):
     # Although I have find the rule to convert pixel to width,
     # but there are still some problems,
     # the pixel value is not accurate enough as expected.
-    row_height = pixel_size * 0.75
-    if pixel_size >= 13:
-        col_width = (pixel_size - 5) / 8.0
+    piexel_count = pixel_size_to_pixel_count(pixel_size)
+    row_height = piexel_count * 0.75
+    if piexel_count >= 13:
+        col_width = (piexel_count - 5) / 8.0
     else:
-        col_width = pixel_size * 0.077
+        col_width = piexel_count * 0.077
     col_width = float(format(col_width, ".2f"))
 
     # Set the column width and row height to make cells become square.
