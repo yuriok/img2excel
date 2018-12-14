@@ -31,7 +31,7 @@ def img2excel(img_path, save_path, sheet_name="img", pixel_size=1):
     # The relationships between pixel and column width is complex.
     # see https://support.microsoft.com/en-us/help/214123/description-of-how-column-widths-are-determined-in-excel
     # Although I have find the rule to convert pixel to width,
-    # but it's still some problems,
+    # but there are still some problems,
     # the pixel value is not accurate enough as expected.
     row_height = pixel_size * 0.75
     if pixel_size >= 13:
