@@ -3,8 +3,9 @@
 A small python script to convert images to excel files.
 
 ## Requirements
-* numpy
-* xlsxwriter
+
+* Pillow
+* XlsxWriter
 
 ## Preview
 
