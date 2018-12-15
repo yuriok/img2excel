@@ -19,7 +19,7 @@ If you want to convert a high resolution (e.g. 1920x1080 or 3840x2160) image, pl
 
 `python img2excel.py -p [your image]`<br><br>
 
-<img width="192" height="104" alt="screenshot of sample1" src="https://raw.githubusercontent.com/yuriok/img2excel/master/screenshot_of_sample1.png"/><br>
+<img width="384" height="208" alt="screenshot of sample1" src="https://raw.githubusercontent.com/yuriok/img2excel/master/screenshot_of_sample1.png"/><br>
 **The result of `sample1` (resolution is 2048x2048)**<br>
 The excel file can be downloaded at [here](https://raw.githubusercontent.com/yuriok/img2excel/master/result_of_sample1.xlsx).
 The image `sample1` is from [Kerry Lambert](http://source.pixite.co/kerry-fin/kf-overlays?photo=59LbNx2oJubZTQPjn). Published under a [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).<br>
